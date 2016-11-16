@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <script src="scripts/vendor/require.js"></script>
+    <script>
+        //Loads the common code that includes requirejs configuration.
+        requirejs(['./scripts/common.js'], function (common) {
+            //Loads the app logic for this page.
+            requirejs(['app/home']);
+        });
+    </script>
+</head>
+<body>
+<div id="content">
+    <p th:text="${message}"></p>
+    <p>{{vMessage}}</p>
+</div>
+</body>
+</html>

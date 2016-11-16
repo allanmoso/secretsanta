@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Pool</title>
+    <script th:src="@{/scripts/vendor/require.js}"></script>
+    <script th:inline="javascript">
+        //Loads the common code that includes requirejs configuration.
+        requirejs(['/scripts/common.js'], function (common) {
+            //Loads the app logic for this page.
+            requirejs(['app/pool']);
+        });
+        var _poolId = /*[[${poolId}]]*/"poolId goes here";
+    </script>
+</head>
+<body>
+<div id="content">
+    <button v-on:click="showAddUser">New User</button>
+    <div v-if="addUserShown">
+        <label>
+            Name
+            <input v-model="newUser.name"/>
+        </label>
+        <label>
+            Email
+            <input v-model="newUser.email"/>
+        </label>
+        <button v-on:click="addUser">Add</button>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="user in users">
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
