@@ -1,8 +1,8 @@
 spring:
     data:
         mongodb:
-            host: "$OPENSHIFT_MONGODB_DB_HOST"
-            port: "$OPENSHIFT_MONGODB_DB_PORT"
+            host: ${openshift.mongodb.db.host}
+            port: ${openshift.mongodb.db.port}
             database: "secretsanta"
-            user: "$OPENSHIFT_MONGODB_USERNAME"
-            password: "$OPENSHIFT_MONGODB_USERNAME"
+            user: ${openshift.mongodb.db.username}
+            password: ${openshift.mongodb.db.password}
