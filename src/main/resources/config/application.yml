@@ -4,5 +4,5 @@ spring:
             host: "127.6.248.2"
             port: 27017
             database: "secretsanta"
-            user: "user"
+            user: "user1"
             password: "test"
