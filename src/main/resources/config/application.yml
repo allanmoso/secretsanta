@@ -4,5 +4,5 @@ spring:
             host: "127.6.248.2"
             port: 27017
             database: "secretsanta"
-            user: ${openshift.mongodb.db.username}
-            password: ${openshift.mongodb.db.password}
+            user: "user"
+            password: "test"
