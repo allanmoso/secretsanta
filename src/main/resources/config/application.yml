@@ -6,3 +6,18 @@ spring:
             database: ${openshift.app.name}
             username: ${openshift.mongodb.db.username}
             password: ${openshift.mongodb.db.password}
+    mail:
+        host: "smtp.gmail.com"
+        username: "moso.sender@gmail.com"
+        password: "aYNgs2ZCmjMWtyqDkVWL"
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    socketFactory:
+                        port: 465
+                        class: javax.net.ssl.SSLSocketFactory
+                        fallback: false
+                    starttls:
+                        enabled: true
+                        required: false
