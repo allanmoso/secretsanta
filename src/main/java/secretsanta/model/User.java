@@ -1,6 +1,8 @@
 package secretsanta.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import secretsanta.dto.UserEditDto;
 
 /**
  * Created by allan.moso on 11/14/2016.
@@ -15,6 +17,9 @@ public class User {
     private String poolId;
 
     private String name;
+
+    @DBRef(db = "user")
+    private User recipient;
 
     public String getId() {
         return id;
@@ -46,5 +51,13 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public User getRecipient() {
+        return recipient;
+    }
+
+    public void setRecipient(User recipient) {
+        this.recipient = recipient;
     }
 }

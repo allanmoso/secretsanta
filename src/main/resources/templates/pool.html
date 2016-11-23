@@ -8,7 +8,7 @@
         //Loads the common code that includes requirejs configuration.
         requirejs(['/scripts/common.js'], function (common) {
             //Loads the app logic for this page.
-            requirejs(['app/pool']);
+            requirejs(['page/pool']);
         });
         var _poolId = /*[[${poolId}]]*/"poolId goes here";
     </script>
@@ -16,6 +16,7 @@
 <body>
 <div id="content">
     <button v-on:click="showAddUser">New User</button>
+    <button v-on:click="draw">Perform Draw</button>
     <div v-if="addUserShown">
         <label>
             Name
@@ -35,7 +36,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="user in users">
+        <tr v-for="user in pool.users">
             <td>{{user.name}}</td>
             <td>{{user.email}}</td>
         </tr>

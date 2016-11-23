@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edit User</title>
+    <script th:src="@{/scripts/vendor/require.js}"></script>
+    <script th:inline="javascript">
+        //Loads the common code that includes requirejs configuration.
+        requirejs(['/scripts/common.js'], function (common) {
+            //Loads the app logic for this page.
+            requirejs(['page/edit-user']);
+        });
+        var _userId = /*[[${userId}]]*/"userId goes here";
+    </script>
+</head>
+<body>
+<div id="content">
+    <label>
+        Name
+        <input v-model="user.name"/>
+    </label>
+    <label>
+        Email
+        <input v-model="user.email"/>
+    </label>
+    <button v-on:click="saveUser">Save</button>
+    <p v-if="saved">Saved.</p>
+
+    <div v-if="user.recipient"> You have drawn the recipient: {{user.recipient.name}}</div>
+
+</div>
+</body>
+</html>

@@ -1,14 +1,15 @@
-package secretsanta;
+package secretsanta.dto;
 
 import secretsanta.model.User;
 
-/**
- * Created by allan.moso on 11/19/2016.
- */
 public class UserViewDto {
 
     private String name;
     private String email;
+
+    @SuppressWarnings("unused")
+    public UserViewDto() {
+    }
 
     public UserViewDto(User user) {
         this.name = user.getName();
