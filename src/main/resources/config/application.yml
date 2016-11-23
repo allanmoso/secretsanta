@@ -9,7 +9,7 @@ spring:
     mail:
         host: "smtp.gmail.com"
         username: "moso.sender@gmail.com"
-        password: "aYNgs2ZCmjMWtyqDkVWL"
+        password: "idriwoutevbzkjxy"
         properties:
             mail:
                 smtp:
