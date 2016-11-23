@@ -1,6 +1,9 @@
 package secretsanta.services;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -18,11 +21,15 @@ import java.util.List;
 
 @Service
 public class UserService {
+    private Logger log = LoggerFactory.getLogger(this.getClass());
     private final UserRepository userRepository;
 
     private final JavaMailSender javaMailSender;
 
     private final HttpServletRequest request;
+
+    @Autowired
+    private Environment environment;
 
     @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
@@ -80,6 +87,9 @@ public class UserService {
     }
 
     public void inviteUser(final User user) throws MessagingException {
+        log.error(environment.getProperty("spring.mail.username"));
+        log.error(environment.getProperty("spring.mail.password"));
+
         final MimeMessage msg = javaMailSender.createMimeMessage();
         msg.setFrom("moso.sender@gmail.com");
         msg.setRecipients(Message.RecipientType.TO, user.getEmail());
