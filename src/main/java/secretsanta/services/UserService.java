@@ -87,8 +87,6 @@ public class UserService {
     }
 
     public void inviteUser(final User user) throws MessagingException {
-        log.error(environment.getProperty("spring.mail.username"));
-        log.error(environment.getProperty("spring.mail.password"));
 
         final MimeMessage msg = javaMailSender.createMimeMessage();
         msg.setFrom("moso.sender@gmail.com");
