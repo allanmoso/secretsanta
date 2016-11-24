@@ -28,9 +28,6 @@ public class UserService {
 
     private final HttpServletRequest request;
 
-    @Autowired
-    private Environment environment;
-
     @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
     public UserService(UserRepository userRepository, JavaMailSender javaMailSender, HttpServletRequest request) {
@@ -86,14 +83,13 @@ public class UserService {
         return userViewDtos;
     }
 
-    public void inviteUser(final User user) throws MessagingException {
-
+    public void sendRecipient(final User user) throws MessagingException {
         final MimeMessage msg = javaMailSender.createMimeMessage();
         msg.setFrom("moso.sender@gmail.com");
         msg.setRecipients(Message.RecipientType.TO, user.getEmail());
-        msg.setSubject("Join Secret Santa");
+        msg.setSubject("Who did you get for Secret Santa?");
         final String baseUrl = request.getRequestURL().substring(0, request.getRequestURL().indexOf(request.getRequestURI()));
-        msg.setText("Go to " + baseUrl + "/user/" + user.getId());
+        msg.setText("Go to the following location to find out: " + baseUrl + "/user/" + user.getId() + "/recipient");
         javaMailSender.send(msg);
     }
 

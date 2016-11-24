@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Who did you get for Secret Santa?</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <p><em th:text="${user.name}"></em>, you got</p>
+        <h1 th:text="${user.recipient.name}"></h1>
+        <p>for Secret Santa.</p>
+    </div>
+</div>
+</body>
+</html>

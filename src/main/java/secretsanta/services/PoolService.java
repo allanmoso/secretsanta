@@ -8,6 +8,7 @@ import secretsanta.model.Pool;
 import secretsanta.model.User;
 import secretsanta.repository.PoolRepository;
 
+import javax.mail.MessagingException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -50,7 +51,7 @@ public class PoolService {
         return pool;
     }
 
-    public void draw(String poolId) {
+    public void draw(String poolId) throws MessagingException {
         List<User> users = userService.getUsers(poolId);
 
         Collections.shuffle(users);
@@ -60,6 +61,7 @@ public class PoolService {
             final User recipient = users.get(i == users.size() - 1 ? 0 : i + 1);
             user.setRecipient(recipient);
             userService.saveUser(user);
+            userService.sendRecipient(user);
         }
     }
 }

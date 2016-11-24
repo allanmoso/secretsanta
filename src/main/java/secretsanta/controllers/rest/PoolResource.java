@@ -37,7 +37,7 @@ public class PoolResource {
     }
 
     @RequestMapping(value = "/{poolId}/draw")
-    public void draw(@PathVariable("poolId") final String poolId) {
+    public void draw(@PathVariable("poolId") final String poolId) throws MessagingException {
         poolService.draw(poolId);
     }
 
@@ -50,7 +50,6 @@ public class PoolResource {
                                @RequestBody User user) throws MessagingException {
         user.setPoolId(poolId);
         userService.saveUser(user);
-        userService.inviteUser(user);
         return new UserViewDto(user);
     }
 }

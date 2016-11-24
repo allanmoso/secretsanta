@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
  * Created by allan.moso on 11/14/2016.
  */
 @Controller
-@RequestMapping("/home")
+@RequestMapping("/")
 public class HomeController {
 
     @RequestMapping(method = RequestMethod.GET)
